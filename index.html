@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style.css">
+    <title>DAW - Lab1</title>
+  </head>
+  <body>
+    <header>
+
+    </header>
+
+    <nav>
+      <a href="#sobreMi">Sobre Mi</a>
+      <a href="#conceptos">Conceptos</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#referencias">Referencias</a>
+      <a href="#footer">Footer</a>
+    </nav>
+
+    <section id="sobreMi">
+      <h1>Sobre Mi</h1>
+      <article>
+        Mi nombre es Bernardo Estrada, estudio en el Instituto Tecnológico de Monterrey.
+        Matricula: A01704320 | Mail: <a href="mailto:a01704320@itesm.mx?subject=feedback">a01704320@itesm.mx</a>
+        <br><strong>Aficiones/Hobbies</strong>
+        <ul>
+            <li>🕹️ Videojuegos</li>
+            <li>👨🏻‍💻 Programar</li>
+            <li>🤖 Robótica y Electrónica</li>
+            <li>📷 Fotografía</li>
+            <li>🎞️ Ver Películas</li>
+            <li>🏐 Volleyball</li>
+            <li>🏒 Hockey (Verlo, no jugar)</li>
+        </ul>
+        <strong>Proyectos</strong>
+        <ul>
+            <li>🏡 Smart Home usando <a href="https://homebridge.io/" target="_blank">Homebridge</a></li>
+            <li>🚸 EZ Learning - Juego con el que apoyabamos a las maestras de kinder y primaria a enseñar ingles a los niños</li>
+            <li>🤖 Robot que detectaba y seguia colores usando una <a href="https://pixycam.com/" target="_blank">PixyCam</a></li>
+        </ul>
+        <br>
+      </article>
+    </section>
+
+    <br>
+    <section id="conceptos">
+      <h1>Conceptos</h1>
+      <article>
+        <h2>URL</h2>
+        (Uniform Resource Locator) Es una serie de caracteres que definen la ubicacion de un recurso en una red o el internet
+        <h2>MIME</h2>
+        (Multipurpose Internet Mail Extension) Es un estandar de formato para emails que permite el uso de caracteres especiales y archivos adjuntos.
+        <h2 id="httpmethods">HTTP</h2>
+        <strong>Existen 9 metodos HTTP:</strong>
+        <br> GET: Solicita un recurso especificado
+        <br> HEAD: Misma funcion que GET pero sin el body de la respuesta
+        <br> POST: Envia una entidad al recurso especificado
+        <br> PUT: Misma funcion que POST pero reemplaza la entidad existente
+        <br> DELETE: Elimina el recurso especificado
+        <br> CONNECT: Establece una coneccion al servidor
+        <br> OPTIONS: Define las opcioines de comunicación
+        <br> TRACE: Genera un mensaje loop-back en el camino al recurso
+        <br> PATCH: Aplica modificaciones parciales a un recurso
+        <br><strong id="httpcodes">Y 5 tipos de errores:</strong>
+        <br>Respuestas Informales: 100-199
+        <br>Respuestas Exitosas: 200-299
+        <br>Redirecciones: 300-399
+        <br>Errores de Cliente: 400-499
+        <br>Errores de Servidor: 500-599
+        <br>Mas informacion sobre los errores HTTP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">aquí</a>
+        <h2>HTML5</h2>
+        (Hypertext Markup Language 5) Es la ultima versión de el estandar de hipertexto con el que se permite hacer paginas web con elementos mas poderosos y mejor organizados
+        <h2>JS</h2>
+        JavaScript es un lenguaje de programación interpretado con el que se puede agregar funcionalidad a paginas y aplicaciones web, así como a servidores.
+        <h2>PHP</h2>
+        Es un lenguaje de secuencias usado principalmente para desarrollo web
+        <h2>JSP</h2>
+        JavaServer Pages es una tecnologia que simplifica la creacion de contenido web dinamico.
+        <h2>AJAX</h2>
+        Es una herramienta que permite modificar la página sin la necesitar de actualizarla, recibir información del servidor despues de que la pagina haya terminado de cargar y enviar informacion al servidor en el fondo
+      </article>
+    </section>
+
+    <section id="preguntas">
+      <h1>Preguntas</h1>
+      <article>
+        <h2>¿Cuál es la diferencia entre Internet y la World Wide Web?</h2>
+        Internet es la conexón de redes alrededor del mundo mientras que la World Wide Web es la coleccion de informacion a la que se accede por medio del internet
+        <h2>¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE?</h2>
+        Se encuentran descritos <a href="#httpmethods">aquí</a>
+        <h2>¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario y contraseña en algún sitio? ¿Por qué?</h2>
+        POST, porque la informacion viaja escondida en el body
+        <h2>¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL?</h2>
+        GET
+        <h2>Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error?</h2>
+        Un error 200 significa que todo salió bien 👌🏻. Mas info sobre los codigos HTTP <a href="#httpcodes">aqui</a>
+        <h2>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 404? ¿Por qué?</h2>
+        Depende de como el usuario recibió este error, si fue a traves de un link en la página, entonces si.
+        <h2>¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio y se encontró con un error 500? ¿Por qué?</h2>
+        Si, este error se refiere a un error interno en el servidor, el cual el desarrollador debe arreglar
+        <h2>¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de HTML 4 que en HTML5 estén desaprobados.</h2>
+        Que ya no es recomendable usarlo por cuestiones de compatibilidad, seguridad o simplemente hay algo nuevo mas facil de usar. E.g. <xmp><font>, <center>, <strike></xmp>
+        <h2>¿Cuáles son las diferencias principales entre HTML 4 y HTML5?</h2>
+        En HTML4 los estilos se agregan directamente en el HTML mientras que HTML5 se agregan desde una hoja de estilo (CSS)
+        <h2>¿Qué componentes de estructura y estilo tiene una tabla?</h2>
+        Los componentes de estructura de una tabla son table (define de donde a donde llega la tabla), tr (define una fila), th (define un encabezado), th (define una celda)
+        <h2>¿Cuáles son los principales controles de una forma HTML5?</h2>
+        Input, textarea, label, select, optgroup, option, button, datalist
+        <h2>¿Qué tanto soporte HTML5 tiene el navegador que utilizas? </h2>
+        481/555 puntos (Chrome 79 en Windows 10)
+        <h2>¿Cuál es el ciclo de vida de los sistemas de información?</h2>
+        <img src="img/Information-systems-life-cycle-development-phase-information.jpg" alt="Ciclo de vida de sistemas de información">
+        <h2>¿Cuál es el ciclo de desarrollo de sistemas de información?</h2>
+        Planeación > Análisis > Diseño > Desarrollo > Pruebas e Integración > Implementación > Mantenimiento
+      </article>
+    </section>
+
+    <section id="referencias">
+      <h1>Referencias</h1>
+      <article>
+        <ul>
+          <li><a href="https://docs.oracle.com/javase/tutorial/networking/urls/definition.html" target="_blank">docs.oracle.com/javase/tutorial/networking/urls/definition.html</a></li>
+          <li><a href="https://www.oracle.com/technetwork/java/index-jsp-138231.html" target="_blank">oracle.com/technetwork/java/index-jsp-138231</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/" target="_blank">developer.mozilla.org/en-US/docs/Web/</a></li>
+          <li><a href="https://www.w3schools.com/" target="_blank">w3schools.com</a></li>
+          <li><a href="https://www.php.net/" target="_blank">php.net</a></li>
+          <li><a href="https://www.geeksforgeeks.org/whats-difference-internet-web/" target="_blank">geeksforgeeks.org/whats-difference-internet-web</a></li>
+        </ul>
+      </article>
+    </section>
+
+    <footer id="footer">
+      Editor Used: <a href="atom.io" target="_blank"> <img class="atomIco" src="img/atom.png" alt="Atom Logo">Atom</a>
+    </footer>
+  </body>
+</html>
+
+<!--
+
+ -->

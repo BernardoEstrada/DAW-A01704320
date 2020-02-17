@@ -1,0 +1,81 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  width: 100vw;
+  max-width:100%;
+  margin: 0;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+section{
+  width: 60vw;
+  position: relative;
+  left: 30vw;
+  align-content: flex-start;
+  align-items: flex-start;
+  padding: 2vw;
+}
+
+section>h1{
+  margin: 0;
+}
+
+article{
+  align-self: flex-start;
+  position: inherit;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  padding: 2em 2vw 2em 2vw;
+  width:50vw;
+  max-width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+section>article>img{
+  width: 60%;
+  position: relative;
+  left:20%;s
+}
+
+section>article>ul{
+  list-style-type: none;
+}
+footer{
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  align-items: center;
+  padding: 1em;
+  margin: 0;
+}
+
+a:link{
+  color: inherit;
+}
+a:visited{
+  color: #9F9F9F;
+}
+
+.atomIco{
+  height: 2em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+/* Style modifications for phones  768*/
+@media only screen and (max-width: 960px) {
+  section{
+    width: 100vw;
+    left: 0;
+  }
+  article {
+    width:84vw;
+    position: relative;
+    max-width: 90%;
+    left: 6vw;
+  }
+}
