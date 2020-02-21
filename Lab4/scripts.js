@@ -3,7 +3,7 @@
 //
 //This function generates and returns a 3 by n array that stores numbers from 1 to n as well as n^2 and n^3
 function tablaPot(num){
-    tab=[];
+    let tab=[];
     for(let i=1; i<=num; i++){
         tab.push([i, i**2, i**3]);
     }
@@ -28,7 +28,7 @@ function tablaHTML(mat){
 }
 //This function requests a number via a prompt and keeps asking until a valid number is entered
 function requestNumber(){
-    let no = prompt("Ingresa Un numero", 0);
+    let no = prompt("Ingresa Un numero", '0');
     while(isNaN(no)){
         no = prompt("Por favor ingresa un valor numerico", 0);
     }
@@ -168,7 +168,7 @@ function matAreEqual(a, b) {
         return false
     }
     return true
-}
+}7
 
 //Testing parameters, they are saved in the next format (it is an array of this arrays):
 // [function, [test1Params, test1ExpRes], [test2Params, test2ExpRes]]
