@@ -1,4 +1,7 @@
-
+//
+//---------------EXERCISE 1-------------------------
+//
+//This function generates and returns a 3 by n array that stores numbers from 1 to n as well as n^2 and n^3
 function tablaPot(num){
     tab=[];
     for(let i=1; i<=num; i++){
@@ -6,20 +9,24 @@ function tablaPot(num){
     }
     return tab;
 }
+//generates an html table based on an array
 function tablaHTML(mat){
     let tabl="";
     tabl = tabl.concat("<table>");
     mat.forEach(row => {
         tabl = tabl.concat("<tr>");
         row.forEach(column => {
+            //saves the html code part by part in an string
             tabl = tabl.concat("<td>" + column + "</td>");
         });
         tabl = tabl.concat("</tr>");
     });
     tabl = tabl.concat("</table>");
 
+    //Adds the stringified html inside ej1 element in the document
     document.getElementById("ej1").innerHTML = tabl;
 }
+//This function requests a number via a prompt and keeps asking until a valid number is entered
 function requestNumber(){
     let no = prompt("Ingresa Un numero", 0);
     while(isNaN(no)){
@@ -28,21 +35,28 @@ function requestNumber(){
     tablaHTML(tablaPot(no));
 }
 
+//
+//---------------EXERCISE 2-------------------------
+//
+//Generates 2 random numbers and asks the user for the sum, it also times how long the user takes
 function randomSum(){
     const maxVal = 100;
-    let nums = [Math.floor(Math.random() * maxVal), Math.floor(Math.random() * maxVal)];
-    let startTime = new Date();
+    let nums = [Math.floor(Math.random() * maxVal), Math.floor(Math.random() * maxVal)]; //store both random nums in an array
+    let startTime = new Date(); //time the user is asked for the answer, a timeout cant be used as prompt would stop it
     let res = prompt("Cual es la suma de " + nums[0] + " + " + nums[1] + "?", 0);
-    while(isNaN(res)){
+    while(isNaN(res)){ //if the answer is not a number, the user is promped to try again
         res = prompt("Por favor ingresa un valor numerico\nCual es la suma de " + nums[0] + " + " + nums[1] + "?", 0);
-    }
+    }//sends an alert telling the user weather the answer was correct or incorrect and the time it took by subtracting startTime from current time
     alert("Tu respuesta fue " + (res==nums[0]+nums[1]?"correcta":"incorrecta") + " y tardaste " + (new Date() - startTime)/1000 + " segundos");
 }
 
+//
+//---------------EXERCISE 3-------------------------
+//
+//This function receives an array of numbers and returns an array with 3 values, amount of numbers <0 , =1  and >0
 function contador(nums){
     let ret = [0, 0, 0];
-
-    //Checks the parameter recieved is in the correct format ([number, number, number, number])
+    //Checks the parameter recieved is in the correct format (an array of numbers) ([number, number, number, number])
     if(nums instanceof Array){
         nums.forEach((num)=> {
             if(isNaN(num)){
@@ -52,8 +66,7 @@ function contador(nums){
     } else{
         throw "Expected array, recieved " + typeof(nums);
     }
-
-
+    //Just goes through the array comparing and counting each value
     nums.forEach(item => {
         if (item < 0) {
             ret[0]++
@@ -63,13 +76,15 @@ function contador(nums){
             ret[2]++
         }
     });
-        return ret;
-
+    return ret;
 }
 
+//
+//---------------EXERCISE 4-------------------------
+//
+//Receives an array of arrays of numbers and returns an array with the average of each sub-array
 function promedios(nums){
     let ret = [];
-
     //Checks the parameter received is in the correct format ([[number, number], [number, number]])
     if(nums instanceof Array){
         nums.forEach((row)=> {
@@ -95,10 +110,15 @@ function promedios(nums){
     return ret;
 }
 
+//
+//---------------EXERCISE 5-------------------------
+//
+//Receives a number and returns that number backwards
 function inverso(no){
     //check if received value can be parsed into number
     if(isNaN(no)){throw "Value is not a number"}
 
+    //The way I was able to do this was by changing the number to a string and then split it into an array so it was easier to flip it
     let res = no.toString().split("");
     let end = res.length-1;
     for(let i=0; i<(end/2); i++){
@@ -106,9 +126,11 @@ function inverso(no){
         res[i] = res[end-i];
         res[end-i] = tmp;
     }
+    //This joins the array into a string and then parses that string into a float (so decimal point can be used)
     return (parseFloat(res.join("")));
 }
 
+//A function to handle throws, receives a function name and the value to be passed
 function handler(f, val) {
     try{
         console.log(f(val));
@@ -118,9 +140,10 @@ function handler(f, val) {
         return e;
     }
 }
-
+//a null function
 function nn(n){return n};
 
+//compares 2 arrays and returns weather they are equal or not, if a number is passed the function still works
 function arrAreEqual(a, b){
     if (a === b) return true;
     if (a == null || b == null) return false;
@@ -135,6 +158,7 @@ function arrAreEqual(a, b){
 
     return true;
 }
+//uses arrAreEqual to compare 2 matrices
 function matAreEqual(a, b) {
     try{
         for(let i=0; i<a.length;i++) {
@@ -146,7 +170,8 @@ function matAreEqual(a, b) {
     return true
 }
 
-//[function, [test1Params, test1ExpRes], [test2Params, test2ExpRes]]
+//Testing parameters, they are saved in the next format (it is an array of this arrays):
+// [function, [test1Params, test1ExpRes], [test2Params, test2ExpRes]]
 let pruebas = [
     [tablaPot,
         [
@@ -187,11 +212,14 @@ let pruebas = [
     ]
 ];
 
+//Testing function, receives what exercise is to be tested and what test number us wanted
 function tester(exercise, testNo){
     let curr = pruebas[exercise-1];
+    //Calculates the result of the function
     let res = curr[0](curr[testNo][0]);
     let emoji = '❌';
 
+    //Checks what is the type of the result and compares it accordingly
     if(res instanceof Array){
         if(res[0]instanceof Array){
             emoji = matAreEqual(res,curr[testNo][1])?'✔️':'❌';
@@ -201,10 +229,13 @@ function tester(exercise, testNo){
     } else{
         emoji = res === curr[testNo][1]?'✔️':'❌';
     }
+
+    //Adds the testing parameters, the result and an emoji showing whether the function worked as expected or not to the body of the html inside a div with id ej(Exercise Number)
     document.getElementById("ej"+exercise).innerHTML += "[" + curr[testNo][0] + "] => [" + res + "] " + emoji + "<br>";
     console.log("Exercise " + exercise + ", test " + testNo + ". Result: " + emoji);
 }
 
+//Runs all tests number a, if no parameter is received, it just runs ALL tests
 function runAllTests(a) {
     for(let i=1; i<=5;i++){
         if(isNaN(a)){
@@ -215,16 +246,10 @@ function runAllTests(a) {
         }
     }
 }
+//Clears all the tests (console and div elements with id ej(Exercise Number))
 function clearTests(a){
     for(let i=1; i<=a;i++){
         document.getElementById("ej"+i).innerHTML = "";
         console.clear();
     }
 }
-
-// Escribe, prueba y debuguea (si es necesario) scripts de JavaScript para los siguientes problemas. Cuando se requiera escribir funciones, es necesario incluir un script para probar la función con al menos 2 conjuntos de datos de prueba. Haz las pruebas en un documento HTML.
-
-// 6:
-// Crea una solución para un problema de tu elección (puede ser algo relacionado con tus intereses, alguna problemática que hayas identificado en algún ámbito, un problema de programación que hayas resuelto en otro lenguaje, un problema de la ACM, entre otros). El problema debe estar descrito en un documento HTML, y la solución implementada en JavaScript, utilizando al menos la creación de un objeto, el objeto además de su constructor deben tener al menos 2 métodos. Muestra los resultados en el documento HTML.
-
-

@@ -23,6 +23,10 @@ body{
     overflow-x: hidden;
 }
 
+nav{
+    padding: 1em;
+}
+
 section{
     width: 80vw;
     position: relative;
