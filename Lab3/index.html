@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+    <title>Lab 4 DAW</title>
     <meta charset="utf-8">
-    <title></title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <h1>Ejercicio 1</h1>
+    <input type="button" value="Prueba Manual" onclick="requestNumber()"/>
+    <input type="button" value="Prueba Automatica 1" onclick="tester(1,1)"/>
+    <input type="button" value="Prueba Automatica 2" onclick="tester(1,2)"/>
+    <div id="ej1"></div>
 
+    <h1>Ejercicio 2</h1>
+    <input type="button" value="Prueba Manual" onclick="randomSum()"/>
+    <div id="ej2"></div>
+
+    <h1>Ejercicio 3</h1>
+    <input type="button" value="Prueba Automatica 1" onclick="tester(3,1)"/>
+    <input type="button" value="Prueba Automatica 2" onclick="tester(3,2)"/>
+    <div id="ej3"></div>
+
+    <h1>Ejercicio 4</h1>
+    <input type="button" value="Prueba Automatica 1" onclick="tester(4, 1)"/>
+    <input type="button" value="Prueba Automatica 2" onclick="tester(4, 2)"/>
+    <div id="ej4"></div>
+
+    <h1>Ejercicio 5</h1>
+    <input type="button" value="Prueba Manual" onclick="alert(handler(inverso, prompt('Ingresa un numero para invertir')))"/>
+    <input type="button" value="Prueba Automatica 1" onclick="tester(5,1)"/>
+    <input type="button" value="Prueba Automatica 2" onclick="tester(5,2)"/>
+    <div id="ej5"></div>
+
+    <h1>Correr Todas las Pruebas Automaticas</h1>
+    <input type="button" value="Prueba Automatica 1" onclick="runAllTests(1)"/>
+    <input type="button" value="Prueba Automatica 2" onclick="runAllTests(2)"/>
+    <input type="button" value="Todas las pruebas" onclick="runAllTests()"/>
+    <input type="button" value="Limpiar las pruebas" onclick="clearTests(5)"/>
 
     <script src="scripts.js" charset="utf-8"></script>
   </body>
