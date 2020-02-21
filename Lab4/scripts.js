@@ -172,6 +172,7 @@ function matAreEqual(a, b) {
 
 //Testing parameters, they are saved in the next format (it is an array of this arrays):
 // [function, [test1Params, test1ExpRes], [test2Params, test2ExpRes]]
+/*
 let pruebas = [
     [tablaPot,
         [
@@ -211,27 +212,93 @@ let pruebas = [
         ]
     ]
 ];
+*/
+function PruebaIO(inp, expOut){
+    this.inp = inp;
+    this.expOutput = expOut;
+}
+function Prueba(func, tests) {
+    this.func = func;
+    this.tests = [];
+    if(tests instanceof Array){
+        tests.forEach(test => {
+            if(test instanceof Array){
+                this.tests.push(new PruebaIO(test[0], test[1]));
+            } else if(test instanceof PruebaIO){
+                this.tests.push(test);
+            }
+        });
+    } else if(tests instanceof PruebaIO){
+        this.tests.push(tests);
+    }
+
+    this.addTest = (inp, expOut) => tests.push(new PruebaIO(inp, expOut));
+
+    //in  -> tests[n].input
+    //out -> tests[n].expOutput
+    this.probar = n => {
+        let test = tests[n-1];
+        let res = this.func(test.inp);
+
+        if(test.expOutput instanceof Array){
+            if(test.expOutput[0] instanceof Array){
+                return matAreEqual(res,test.expOutput);
+            } else {
+                return arrAreEqual(res,test.expOutput);
+            }
+        } else{
+            return res === test.expOutput;
+        }
+    };
+
+    this.res = n => {
+        let test = tests[n-1];
+        return this.func(test.inp);
+    };
+
+}
+
+let pruebas = [];
+
+let valoresPruebas = [
+    new PruebaIO(5, [[1, 1, 1], [2, 4, 8], [3, 9, 27], [4, 16, 64], [5, 25, 125]]),
+    new PruebaIO(10, [[1, 1, 1], [2, 4, 8], [3, 9, 27], [4, 16, 64], [5, 25, 125], [6, 36, 216], [7, 49, 343], [8, 64, 512], [9, 81, 729], [10, 100, 1000]]),
+];
+pruebas.push(new Prueba(tablaPot, valoresPruebas));
+
+valoresPruebas = [
+    new PruebaIO(1,1),
+    new PruebaIO(1,1),
+];
+pruebas.push(new Prueba(nn, valoresPruebas));
+
+valoresPruebas = [
+    new PruebaIO([4, 3, 7, 8, 0, -1, 3, -6, -1, 0],[3, 2, 5]),
+    new PruebaIO([-2, -1, 0, 1, 2],[2, 1, 2]),
+];
+pruebas.push(new Prueba(contador, valoresPruebas));
+
+valoresPruebas = [
+    new PruebaIO([[3, 6, 11], [23, 9, 17, 12]],[6.666666666666667, 15.25]),
+    new PruebaIO([[3, 2, 1], [6, 17], [16], [21, 9]],[2, 11.5, 16, 15]),
+];
+pruebas.push(new Prueba(promedios, valoresPruebas));
+
+valoresPruebas = [
+    new PruebaIO(123456789,987654321),
+    new PruebaIO(45.123,321.54),
+];
+pruebas.push(new Prueba(inverso, valoresPruebas));
 
 //Testing function, receives what exercise is to be tested and what test number us wanted
 function tester(exercise, testNo){
     let curr = pruebas[exercise-1];
-    //Calculates the result of the function
-    let res = curr[0](curr[testNo][0]);
     let emoji = '❌';
+    emoji=curr.probar(testNo)?'✔️':'❌';
 
-    //Checks what is the type of the result and compares it accordingly
-    if(res instanceof Array){
-        if(res[0]instanceof Array){
-            emoji = matAreEqual(res,curr[testNo][1])?'✔️':'❌';
-        } else {
-            emoji = arrAreEqual(res,curr[testNo][1])?'✔️':'❌';
-        }
-    } else{
-        emoji = res === curr[testNo][1]?'✔️':'❌';
-    }
-
+    
     //Adds the testing parameters, the result and an emoji showing whether the function worked as expected or not to the body of the html inside a div with id ej(Exercise Number)
-    document.getElementById("ej"+exercise).innerHTML += "[" + curr[testNo][0] + "] => [" + res + "] " + emoji + "<br>";
+    document.getElementById("ej"+exercise).innerHTML += "[" + curr.tests[testNo-1].inp + "] => [" + curr.res(testNo) + "] " + emoji + "<br>";
     console.log("Exercise " + exercise + ", test " + testNo + ". Result: " + emoji);
 }
 
