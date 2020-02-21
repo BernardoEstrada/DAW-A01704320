@@ -5,38 +5,108 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Ejercicio 1</h1>
-    <input type="button" value="Prueba Manual" onclick="requestNumber()"/>
-    <input type="button" value="Prueba Automatica 1" onclick="tester(1,1)"/>
-    <input type="button" value="Prueba Automatica 2" onclick="tester(1,2)"/>
-    <div id="ej1"></div>
+    <nav>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#ejs">Ejercicios</a>:
+      <a href="#e1">Ejercicio1</a>
+      <a href="#e2">Ejercicio2</a>
+      <a href="#e3">Ejercicio3</a>
+      <a href="#e4">Ejercicio4</a>
+      <a href="#e5">Ejercicio5</a>
+      <a href="#todas">Todos</a>
+    </nav>
 
-    <h1>Ejercicio 2</h1>
-    <input type="button" value="Prueba Manual" onclick="randomSum()"/>
-    <div id="ej2"></div>
+    <section id="preguntas">
+        <h1>Preguntas</h1>
+        <article>
+            <h2>¿Qué diferencias y semejanzas hay entre Java y JavaScript?</h2>
+            La unica similitud es el nombre al igual que la orientacion a objetos
+        </article>
+        <article>
+            <h2>¿Qué métodos tiene el objeto Date? (Menciona al menos 5*)</h2>
+            <ul>
+                <li>getDate()</li>
+                <li>getFullYear()</li>
+                <li>getHours()</li>
+                <li>getTime()</li>
+                <li>setDate()</li>
+            </ul>
+        </article>
+        <article>
+            <h2>¿Qué métodos tienen los arreglos? (Menciona al menos 5*)</h2>
+            <ul>
+                <li>push()</li>
+                <li>pop()</li>
+                <li>indexOf()</li>
+                <li>slice()</li>
+                <li>reverse()</li>
+                <li>sort()</li>
+                <li>unshift()</li>
+            </ul>
+        </article>
+        <article>
+            <h2>¿Cómo se declara una variable con alcance local dentro de una función?</h2>
+            Con la palabra reservada let
+        </article>
+        <article>
+            <h2>¿Qué implicaciones tiene utilizar variables globales dentro de funciones?</h2>
+            Que pueden ser accidentalmente llamadas o cambiadas desde otra funcion
+        </article>
+        <article>
+            <h2>¿Qué método de String se puede utilizar para buscar patrones con expresiones regulares?¿Para qué podrías utilizar esto en una aplicación web?</h2>
+            search() <br> Para generar etiquetas de un producto basandonos en la descripción de este
+        </article>
+    </section>
+    <hr>
+    <section id="ejs">
+        <h1>Ejemplos</h1>
+        <article id="e1">
+            <h2>Ejercicio 1</h2>
+            <input type="button" value="Prueba Manual" onclick="requestNumber()"/>
+            <input type="button" value="Prueba Automatica 1" onclick="tester(1,1)"/>
+            <input type="button" value="Prueba Automatica 2" onclick="tester(1,2)"/>
+            <div id="ej1"></div>
+        </article>
+        <article id="e2">
+            <h2>Ejercicio 2</h2>
+            <input type="button" value="Prueba Manual" onclick="randomSum()"/>
+            <div id="ej2"></div>
+        </article>
+        <article id="e3">
+            <h2>Ejercicio 3</h2>
+            <input type="button" value="Prueba Automatica 1" onclick="tester(3,1)"/>
+            <input type="button" value="Prueba Automatica 2" onclick="tester(3,2)"/>
+            <div id="ej3"></div>
+        </article>
+        <article id="e4">
+            <h2>Ejercicio 4</h2>
+            <input type="button" value="Prueba Automatica 1" onclick="tester(4, 1)"/>
+            <input type="button" value="Prueba Automatica 2" onclick="tester(4, 2)"/>
+            <div id="ej4"></div>
+        </article>
+        <article id="e5">
+            <h2>Ejercicio 5</h2>
+            <input type="button" value="Prueba Manual" onclick="alert(handler(inverso, prompt('Ingresa un numero para invertir')))"/>
+            <input type="button" value="Prueba Automatica 1" onclick="tester(5,1)"/>
+            <input type="button" value="Prueba Automatica 2" onclick="tester(5,2)"/>
+            <div id="ej5"></div>
+        </article>
+        <article id="todas">
+            <h2>Correr Todas las Pruebas Automaticas</h2>
+            <input type="button" value="Prueba Automatica 1" onclick="runAllTests(1)"/>
+            <input type="button" value="Prueba Automatica 2" onclick="runAllTests(2)"/>
+            <input type="button" value="Todas las pruebas" onclick="runAllTests(); window.scrollTo(0,document.body.scrollHeight);"/>
+            <input type="button" value="Limpiar las pruebas" onclick="clearTests(5)"/>
+        </article>
+    </section>
 
-    <h1>Ejercicio 3</h1>
-    <input type="button" value="Prueba Automatica 1" onclick="tester(3,1)"/>
-    <input type="button" value="Prueba Automatica 2" onclick="tester(3,2)"/>
-    <div id="ej3"></div>
+    <footer id="referencias">
+        <h1>Referencias</h1>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference" target="_blank">developer.mozilla.org/en-US/docs/Web/JavaScript/Reference</a></li>
+        </ul>
+    </footer>
 
-    <h1>Ejercicio 4</h1>
-    <input type="button" value="Prueba Automatica 1" onclick="tester(4, 1)"/>
-    <input type="button" value="Prueba Automatica 2" onclick="tester(4, 2)"/>
-    <div id="ej4"></div>
-
-    <h1>Ejercicio 5</h1>
-    <input type="button" value="Prueba Manual" onclick="alert(handler(inverso, prompt('Ingresa un numero para invertir')))"/>
-    <input type="button" value="Prueba Automatica 1" onclick="tester(5,1)"/>
-    <input type="button" value="Prueba Automatica 2" onclick="tester(5,2)"/>
-    <div id="ej5"></div>
-
-    <h1>Correr Todas las Pruebas Automaticas</h1>
-    <input type="button" value="Prueba Automatica 1" onclick="runAllTests(1)"/>
-    <input type="button" value="Prueba Automatica 2" onclick="runAllTests(2)"/>
-    <input type="button" value="Todas las pruebas" onclick="runAllTests()"/>
-    <input type="button" value="Limpiar las pruebas" onclick="clearTests(5)"/>
-
-    <script src="scripts.js" charset="utf-8"></script>
+    <script src="scripts.js"></script>
   </body>
 </html>
