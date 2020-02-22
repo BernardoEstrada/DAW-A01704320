@@ -296,7 +296,7 @@ function tester(exercise, testNo){
     let emoji = '❌';
     emoji=curr.probar(testNo)?'✔️':'❌';
 
-    
+
     //Adds the testing parameters, the result and an emoji showing whether the function worked as expected or not to the body of the html inside a div with id ej(Exercise Number)
     document.getElementById("ej"+exercise).innerHTML += "[" + curr.tests[testNo-1].inp + "] => [" + curr.res(testNo) + "] " + emoji + "<br>";
     console.log("Exercise " + exercise + ", test " + testNo + ". Result: " + emoji);
