@@ -170,74 +170,34 @@ function matAreEqual(a, b) {
     return true
 }7
 
-//Testing parameters, they are saved in the next format (it is an array of this arrays):
-// [function, [test1Params, test1ExpRes], [test2Params, test2ExpRes]]
-/*
-let pruebas = [
-    [tablaPot,
-        [
-            5,
-            [[1, 1, 1], [2, 4, 8], [3, 9, 27], [4, 16, 64], [5, 25, 125]]
-        ], [
-            10,
-            [[1, 1, 1], [2, 4, 8], [3, 9, 27], [4, 16, 64], [5, 25, 125], [6, 36, 216], [7, 49, 343], [8, 64, 512], [9, 81, 729], [10, 100, 1000]]
-        ]
-    ],
-    [nn,[1,1],[1,1]],
-    [contador,
-        [
-            [4, 3, 7, 8, 0, -1, 3, -6, -1, 0],
-            [3, 2, 5]
-        ], [
-            [-2, -1, 0, 1, 2],
-            [2, 1, 2]
-        ]
-    ],
-    [promedios,
-        [
-            [[3, 6, 11], [23, 9, 17, 12]],
-            [6.666666666666667, 15.25]
-        ], [
-            [[3, 2, 1], [6, 17], [16], [21, 9]],
-            [2, 11.5, 16, 15]
-        ]
-    ],
-    [inverso,
-        [
-            123456789,
-            987654321
-        ], [
-            45.123,
-            321.54
-        ]
-    ]
-];
-*/
+//Testing parameters, they are saved in the next format
 function PruebaIO(inp, expOut){
     this.inp = inp;
     this.expOutput = expOut;
 }
-function Prueba(func, tests) {
-    this.func = func;
-    this.tests = [];
-    if(tests instanceof Array){
-        tests.forEach(test => {
-            if(test instanceof Array){
-                this.tests.push(new PruebaIO(test[0], test[1]));
-            } else if(test instanceof PruebaIO){
-                this.tests.push(test);
-            }
-        });
-    } else if(tests instanceof PruebaIO){
-        this.tests.push(tests);
+class Prueba {
+    constructor(func, tests) {
+        this.func = func;
+        this.tests = [];
+        if (tests instanceof Array) {
+            tests.forEach(test => {
+                if (test instanceof Array) {
+                    this.tests.push(new PruebaIO(test[0], test[1]));
+                } else if (test instanceof PruebaIO) {
+                    this.tests.push(test);
+                }
+            });
+        } else if (tests instanceof PruebaIO) {
+            this.tests.push(tests);
+        }
     }
-
-    this.addTest = (inp, expOut) => tests.push(new PruebaIO(inp, expOut));
+    addTest = (inp, expOut) => this.tests.push(new PruebaIO(inp, expOut));
+    getTest = testN => this.tests[testN-1];
 
     //in  -> tests[n].input
     //out -> tests[n].expOutput
-    this.probar = n => {
-        let test = tests[n-1];
+    probar = n => {
+        let test = this.tests[n-1];
         let res = this.func(test.inp);
 
         if(test.expOutput instanceof Array){
@@ -250,12 +210,10 @@ function Prueba(func, tests) {
             return res === test.expOutput;
         }
     };
-
-    this.res = n => {
-        let test = tests[n-1];
+    res = n => {
+        let test = this.tests[n-1];
         return this.func(test.inp);
     };
-
 }
 
 let pruebas = [];
@@ -298,7 +256,7 @@ function tester(exercise, testNo){
 
 
     //Adds the testing parameters, the result and an emoji showing whether the function worked as expected or not to the body of the html inside a div with id ej(Exercise Number)
-    document.getElementById("ej"+exercise).innerHTML += "[" + curr.tests[testNo-1].inp + "] => [" + curr.res(testNo) + "] " + emoji + "<br>";
+    document.getElementById("ej"+exercise).innerHTML += "[" + curr.getTest(testNo).inp + "] => [" + curr.res(testNo) + "] " + emoji + "<br>";
     console.log("Exercise " + exercise + ", test " + testNo + ". Result: " + emoji);
 }
 
