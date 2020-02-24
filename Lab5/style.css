@@ -94,3 +94,8 @@ hr{
 #errorInPass {
     color: red;
 }
+
+.hue{
+    width: 50%;
+    filter: hue-rotate(90deg);
+}
