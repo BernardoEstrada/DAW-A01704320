@@ -95,7 +95,19 @@ hr{
     color: red;
 }
 
-.hue{
-    width: 50%;
-    filter: hue-rotate(90deg);
+section#shop{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
 }
+
+article.shopItem{
+    align-self: flex-start;
+    flex: 0 0 300px;
+}
+
+.itemImg{
+    width:100%;
+}
+
