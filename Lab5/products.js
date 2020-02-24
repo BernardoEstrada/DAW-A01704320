@@ -19,6 +19,8 @@ let items = [],
 items.push(new Item("Cap", 99, "cap.png"));
 items.push(new Item("Backpack", 499, "bag.png"));
 items.push(new Item("T-Shirt", 299, "shirt.png"));
+items.push(new Item("Shoes", 1399, "shoes.png"));
+items.push(new Item("Socks", 59, "socks.png"));
 
 //Adds items into html using the template
 items.forEach(itm => {
@@ -26,7 +28,7 @@ items.forEach(itm => {
         <article class=shopItem id=shp-${itm.name}> 
             <h3>${itm.name}</h3>
             <img class=itemImg id='img${itm.name}' alt='${itm.name}' src='img/${itm.img}' />
-            <h4>$${itm.price}<a href="#footer">*</a></h4>
+            <h4>$${itm.price}<a href="#asterisk">*</a></h4>
             <label for="color${itm.name}">Choose a color:</label>
             <select id="color${itm.name}">
                 <option value="black">Black</option>
@@ -75,7 +77,6 @@ function setColor(imgId, col){
 }
 
 //Displays the cart as a table in the file
-let rem;
 function cartToTable(){
     let total = 0;
     htmlToAdd = "<th>Name<th>Color</th><th>Price</th>";
