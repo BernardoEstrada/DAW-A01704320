@@ -21,6 +21,8 @@ items.push(new Item("Backpack", 499, "bag.png"));
 items.push(new Item("T-Shirt", 299, "shirt.png"));
 items.push(new Item("Shoes", 1399, "shoes.png"));
 items.push(new Item("Socks", 59, "socks.png"));
+items.push(new Item("Hoodie", 1099, "hoodie.png"));
+items.push(new Item("Beenie", 99, "beenie.png"));
 
 //Adds items into html using the template
 items.forEach(itm => {
@@ -79,7 +81,7 @@ function setColor(imgId, col){
 //Displays the cart as a table in the file
 function cartToTable(){
     let total = 0;
-    htmlToAdd = "<th>Name<th>Color</th><th>Price</th>";
+    htmlToAdd = "<th>Item<th>Color</th><th>Price</th>";
     cart.forEach(item => {
         total += item.price;
         htmlToAdd = htmlToAdd.concat(`
