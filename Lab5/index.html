@@ -6,6 +6,47 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-    
+    <section id="password">
+        <h1>Password</h1>
+        <article>
+            <label for=enterPass>Password: </label>
+            <input type=password id=enterPass placeholder="Enter your password"/>
+            <span id=passValid ></span>
+            <br>
+
+            <label for=confirmPass>Confirmation: </label>
+            <input type=password id=confirmPass placeholder="Confirm your password" disabled/>
+            <span id=confirmValid ></span>
+            <br>
+
+            <span id=errorInPass></span>
+
+            <br>
+            <label for=showPass>Show Password</label>
+            <input type=checkbox id=showPass />
+            <input type=button id=continue value="Continue"/>
+        </article>
+    </section>
+    <hr>
+    <section id="shop">
+        <h1>Shop</h1>
+        <article>
+            <div class=shopItem>
+                <img alt="" src=""/>
+                <span id="price">$23</span>
+                <label for=select>Add to Cart</label>
+                <input type=button id=select />
+            </div>
+            <div class=shopItem>
+                <img alt="" src=""/>
+                <span id="price">$50</span>
+                <label for=select>Add to Cart</label>
+                <input type=button id=select />
+            </div>
+        </article>
+    </section>
+
+    <script src="password.js"></script>
+    <script src="products.js"></script>
     </body>
 </html>
