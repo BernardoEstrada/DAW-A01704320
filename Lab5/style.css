@@ -77,6 +77,16 @@ hr{
     width: 90vw;
 }
 
+input {
+    border: 1px black solid;
+    margin: 0.1em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+}
+input:disabled{
+    background-color: rgba(50,50,50,0.5);
+}
+
 /* Style modifications for phones  768*/
 @media only screen and (max-width: 960px) {
     section{
@@ -91,8 +101,9 @@ hr{
     }
 }
 
-#errorInPass {
+.error {
     color: red;
+    font-weight: bolder;
 }
 
 section#shop{
