@@ -6,8 +6,15 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+    <nav>
+        <a href="#password">PasswordChecker</a>
+        <a href="#shop">Shop</a>
+
+        <a href="#sources">Sources</a>
+    </nav>
+
     <section id="password">
-        <h1>Password</h1>
+        <h1>Password Checker</h1>
         <article>
             <label for=enterPass>Password: </label>
             <input type=password id=enterPass placeholder="Enter your password"/>
@@ -29,22 +36,21 @@
     </section>
     <hr>
     <section id="shop">
-        <h1>Shop</h1>
-        <article>
-            <div class=shopItem>
-                <img alt="" src=""/>
-                <span id="price">$23</span>
-                <label for=select>Add to Cart</label>
-                <input type=button id=select />
-            </div>
-            <div class=shopItem>
-                <img alt="" src=""/>
-                <span id="price">$50</span>
-                <label for=select>Add to Cart</label>
-                <input type=button id=select />
-            </div>
-        </article>
+        <h1>Shop</h1><br>
     </section>
+
+
+    <footer id="sources">
+        <h1>Sources</h1>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference" target="_blank">developer.mozilla.org/en-US/docs/Web/JavaScript/Reference</a></li>
+            <li><a href="https://javascript.info/regexp-character-sets-and-ranges" target="_blank">javascript.info/regexp-character-sets-and-ranges</a></li>
+            <li><a href="https://www.w3schools.com/" target="_blank">w3schools</a></li>
+        </ul>
+        <h4 id="asterisk">
+            *Prices include VAT
+        </h4>
+    </footer>
 
     <script src="password.js"></script>
     <script src="products.js"></script>

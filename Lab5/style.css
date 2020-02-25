@@ -94,3 +94,26 @@ hr{
 #errorInPass {
     color: red;
 }
+
+section#shop{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#shop > h1{
+    flex-grow: 12;
+    width: 100%;
+}
+
+article.shopItem{
+    align-self: flex-start;
+    flex: 0 0 300px;
+}
+
+.itemImg{
+    width:100%;
+}
+
