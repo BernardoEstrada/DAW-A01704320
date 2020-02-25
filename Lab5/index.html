@@ -9,7 +9,7 @@
     <nav>
         <a href="#password">PasswordChecker</a>
         <a href="#shop">Shop</a>
-        <a href="#premio">Premio</a>
+        <a href="#signup">SignUp</a>
         <a href="#preguntas">Preguntas</a>
 
         <a href="#sources">Sources</a>
@@ -40,19 +40,25 @@
     <section id="shop">
     </section>
     <hr>
-    <section id="premio">
-        <h1>Has Ganado un premio!</h1>
+    <section id="libre">
+        <h1>Sign Up</h1>
 
         <form id="signup">
-            <label for=enterName>Nombre Completo: </label>
-            <input type=text id=enterName placeholder="Ingresa tu nombre" required/>
+            <label for=enterName>Name: </label>
+            <input type=text id=enterName placeholder="Enter your name" required/>
             <span id=nameValid class=error></span>
             <br>
             <label for=enterEmail>Email: </label>
             <input type=email id=enterEmail placeholder="Enter your email" required/>
             <span id=mailValid class=error></span>
             <br>
+            <label for=enterPhone>Phone Number: </label>
+            <input type=text id=enterPhone placeholder="Enter your Phone" required/>
+            <span id=phoneValid class=error></span>
+            <br>
+            <input type="submit">
         </form>
+        <table id="people"></table>
     </section>
     <hr>
     <section id="preguntas">
