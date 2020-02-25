@@ -9,6 +9,8 @@
     <nav>
         <a href="#password">PasswordChecker</a>
         <a href="#shop">Shop</a>
+        <a href="#premio">Premio</a>
+        <a href="#preguntas">Preguntas</a>
 
         <a href="#sources">Sources</a>
     </nav>
@@ -26,7 +28,7 @@
             <span id=confirmValid ></span>
             <br>
 
-            <span id=errorInPass></span>
+            <span id=errorInPass class=error></span>
 
             <br>
             <label for=showPass>Show Password</label>
@@ -36,7 +38,33 @@
     </section>
     <hr>
     <section id="shop">
-        <h1>Shop</h1><br>
+    </section>
+    <hr>
+    <section id="premio">
+        <h1>Has Ganado un premio!</h1>
+
+        <form id="signup">
+            <label for=enterName>Nombre Completo: </label>
+            <input type=text id=enterName placeholder="Ingresa tu nombre" required/>
+            <span id=nameValid class=error></span>
+            <br>
+            <label for=enterEmail>Email: </label>
+            <input type=email id=enterEmail placeholder="Enter your email" required/>
+            <span id=mailValid class=error></span>
+            <br>
+        </form>
+    </section>
+    <hr>
+    <section id="preguntas">
+        <h1>Preguntas</h1><br>
+        <article>
+            <h2>¿Por qué es una buena práctica usar JavaScript para checar que sean válidos los inputs de las formas antes de enviar los datos al servidor?</h2>
+            Para evitar desperdiciar recursos y tiempo al enviar información que el servidor va a rechazar
+            <h2>¿Cómo puedes saltarte la seguridad de validaciones hechas con JavaScript?</h2>
+             Injectando otro script
+            <h2>Si te puedes saltar la seguridad de las validaciones de JavaScript, entonces ¿por qué la primera pregunta dice que es una buena práctica?</h2>
+            Porque la mayoria de la gente no va a hacer esto.
+        </article>
     </section>
 
 
@@ -54,5 +82,6 @@
 
     <script src="password.js"></script>
     <script src="products.js"></script>
+    <script src="signup.js"></script>
     </body>
 </html>
