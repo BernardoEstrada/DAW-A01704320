@@ -12,12 +12,12 @@ document.getElementById("signup").addEventListener("submit", function(event){
 
 document.getElementById("enterName").addEventListener("input", function(){
     let span = document.getElementById("nameValid");
-    try{checkName(this.value); span.innerText = "✔"; span.className = "";}
+    try{checkName(this.value); span.innerText = "✔️"; span.className = "";}
     catch(e){span.innerText = "❌" + e; span.className = "Error"}
 });
 document.getElementById("enterPhone").addEventListener("input", function(){
     let span = document.getElementById("phoneValid");
-    try{checkPhone(this.value); span.innerText = "✔"; span.className = "";}
+    try{checkPhone(this.value); span.innerText = "✔️"; span.className = "";}
     catch(e){span.innerText = "❌" + e; span.className = "Error"}
 });
 
@@ -52,5 +52,5 @@ function table(){
     document.getElementById("people").innerHTML = htmlToAdd;
 }
 
-//✔
+//✔️
 //❌
