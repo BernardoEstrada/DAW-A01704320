@@ -53,7 +53,7 @@ function hidePass(){
 function ValidPass(p) {
     let caps = /[A-Z]/, //Finds caps to improve security
         nums = /[0-9]/,
-        symbols = /[!-/:-@[-`{-~]/, //Finds valid symbols to make passwords more secure
+        symbols = /[!-@[-`{-~]/, //Finds valid symbols to make passwords more secure
         reject = /[^!-~]/; //RegEx finds invalid characters (outside of range ! to ~ in ascii)
 
     if(reject.test(p)){
@@ -90,7 +90,7 @@ function checkErrors(inp) {
     if(inp === passInput){
         try{
             ValidPass(pass);
-            checkSpan.innerText = "✔️";
+            checkSpan.innerText = "✔";
             errorDisplay.innerText = "";
             unlockVerify();
         } catch (e) {
@@ -104,7 +104,7 @@ function checkErrors(inp) {
         checkSpan = document.getElementById("confirmValid");
         try{
             verifyConfirmation(pass, passConfirm.value);
-            checkSpan.innerText = "✔️";
+            checkSpan.innerText = "✔";
             errorDisplay.innerText = "";
         } catch (e){
             checkSpan.innerText = "❌";
