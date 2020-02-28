@@ -87,5 +87,44 @@ document.getElementById("botonAlerta").addEventListener("click", function () {
         this.labels[0].innerText = "No presiones este botón " + presses + " veces más";
     }
 });
-// right: 1vw;
-// bottom: 1vh;
+
+let cronoSeg = 0.0, timerSeg = 0;
+let crono, temp,
+cronoDisp = document.getElementById("crono");
+
+function startCrono(){
+    if(!crono){
+        crono = setInterval(() =>{
+            cronoSeg+=0.01;
+            dispCrono()
+        }, 10);
+    }
+}
+function stopCrono(){
+    clearInterval(crono);
+    crono = null;
+    dispCrono()
+}
+function clearCrono(){
+    cronoSeg = 0.0;
+    dispCrono()
+}
+function dispCrono() {
+    cronoDisp.innerText = cronoSeg.toFixed(2) + "s";
+}
+
+
+function startTemp(){
+    timerSeg = parseFloat(document.getElementById("tempSeg").value);
+    temp = setTimeout(()=>{
+        alert("Time is done")
+    }, timerSeg*1000);
+}
+// Iniciar Cronómetro cronoStart
+// Parar Cronómetro cronoStop
+// Reiniciar Cronómetro cronoRe
+// crono
+//
+// tempSeg
+// Iniciar Temporizador tempS
+// temp
