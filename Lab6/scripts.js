@@ -88,10 +88,11 @@ document.getElementById("botonAlerta").addEventListener("click", function () {
     }
 });
 
+
 let cronoSeg = 0.0, timerSeg = 0;
 let crono, temp,
 cronoDisp = document.getElementById("crono");
-
+//inicia un intervalo llamado crono (solo si este es nulo para evitar multiples intervalos no deseados)
 function startCrono(){
     if(!crono){
         crono = setInterval(() =>{
@@ -100,11 +101,13 @@ function startCrono(){
         }, 10);
     }
 }
+//detiene el intervalo
 function stopCrono(){
     clearInterval(crono);
     crono = null;
     dispCrono()
 }
+//Reinicia los segundos a 0
 function clearCrono(){
     cronoSeg = 0.0;
     dispCrono()
@@ -113,18 +116,47 @@ function dispCrono() {
     cronoDisp.innerText = cronoSeg.toFixed(2) + "s";
 }
 
-
+//crea un timeout usando los segundos en la caja de texto tempSeg
 function startTemp(){
     timerSeg = parseFloat(document.getElementById("tempSeg").value);
     temp = setTimeout(()=>{
         alert("Time is done")
     }, timerSeg*1000);
 }
-// Iniciar Cronómetro cronoStart
-// Parar Cronómetro cronoStop
-// Reiniciar Cronómetro cronoRe
-// crono
-//
-// tempSeg
-// Iniciar Temporizador tempS
-// temp
+
+
+targets = document.getElementsByClassName("dropTarget");
+for(let i=0; i<targets.length;i++){
+    targets[i].addEventListener("dragover", function(event){
+        event.preventDefault();
+        this.classList.add('over');
+    });
+    targets[i].addEventListener("dragleave", function(event){
+        event.preventDefault();
+        this.classList.remove('over');
+    });
+    targets[i].addEventListener("drop", function(event){
+        event.preventDefault();
+        this.classList.remove('over');
+        try {
+            event.target.appendChild(document.getElementById(event.dataTransfer.getData("text")));
+        } catch(e){
+            console.log(e);
+        }
+    });
+}
+document.getElementById("draggable1").addEventListener("dragstart", (event)=>{
+    event.dataTransfer.setData("text", event.target.id);
+});
+document.getElementById("draggable1").addEventListener("drop", ()=>false);
+document.getElementById("draggable2").addEventListener("dragstart", (event)=>{
+    event.dataTransfer.setData("text", event.target.id);
+});
+document.getElementById("draggable2").addEventListener("drop", ()=>false);
+
+
+// function drop(ev) {
+//     ev.preventDefault();
+//     let data = ev.dataTransfer.getData("text");
+//     ev.target.appendChild(document.getElementById(data));
+// }

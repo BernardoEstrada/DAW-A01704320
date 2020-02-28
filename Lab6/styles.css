@@ -59,6 +59,7 @@ footer{
     align-items: center;
     padding: 1em;
     margin: 0;
+    left: 0;
 }
 
 a:link{
@@ -189,4 +190,18 @@ code.highlighted{
 }
 .bubble.small:after{
     top: 40%;
+}
+
+
+.dropTarget {
+    float: inside;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.dropTarget.over {
+    border: 2px dashed #000;
 }
