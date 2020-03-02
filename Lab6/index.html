@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="styles.css">
+        <title>DAW - Lab6</title>
+    </head>
+    <body>
+        <header>
+
+        </header>
+
+        <nav>
+
+            <a href="#preguntas">Preguntas</a>
+            <a href="#referencias">Referencias</a>
+            <a href="#footer">Footer</a>
+        </nav>
+
+        <section>
+            <article id="watermark">
+                Bernardo Estrada <br> A01704320
+                <div id="close">X</div>
+            </article>
+        </section>
+
+        <section id="eventListener">
+            <h1>EventListener</h1>
+            <article>
+                <h2>Presiona C en el teclado para subrayar el código en el documento</h2>
+                Se puede usar <code>event.key</code> para poder saber que tecla se presionó en el evento <code>eventListener(keydown, function(event))</code><br>
+                Tambien, podemos usar <code>element.classList.toggle("")</code> para  activar y desactivar una clase
+                <h2>Tambien puedes intentar cerrar la marca de agua de la derecha inferior</h2>
+            </article>
+        </section>
+        <hr>
+        <section id="showHelp">
+            <h1>Información dinámica</h1>
+            <article>
+                <input type="password" id="pass">
+                <label for="pass" class="bubble" hidden>Toma en cuenta las siguientes recomendaciones: <br>- Usa mayusculas <br>- Usa numeros <br>- Usa caracteres especiales</label>
+                <br>
+                Terminos<input type="checkbox" id="term">
+                <label for="term" class="bubble small" hidden>Para poder usar todos nuestros servicios, por favor acepta los terminos y condiciones</label>
+                <br>
+                Condiciones<input type="checkbox" id="condiciones">
+                <br>
+                <input type="button" value="Continuar" id="cont">
+                <br>
+                <input type="button" value="Mostrar Alerta" id="botonAlerta">
+                <label for="botonAlerta"></label>
+                <p id="presiona"></p>
+
+            </article>
+        </section>
+        <hr>
+        <section id="interYtime">
+            <h1>Intervals y Timeout</h1>
+            <article>
+                <h2>Cronómetro usando Interval</h2>
+                <input type="button" value="Iniciar Cronómetro" id="cronoStart" onclick="startCrono()">
+                <input type="button" value="Parar Cronómetro" id="cronoStop" onclick="stopCrono()">
+                <input type="button" value="Reiniciar Cronómetro" id="cronoRe" onclick="clearCrono()">
+                <span id="crono"></span>
+            </article>
+            <article>
+                <h2>Temporizador usando Timeout</h2>
+                <label for="tempSeg">Segundos</label>
+                <input type="number" id="tempSeg">
+                <input type="button" value="Iniciar Temporizador" id="tempS" onclick="startTemp()">
+            </article>
+
+        </section>
+        <hr>
+        <section class="dragDrop">
+            <h1>Drag & Drop</h1>
+            <article>
+                <div class="dropTarget">
+                    <p draggable="true" id="draggable1"> ASDFDa </p>
+                </div>
+                <div class="dropTarget">
+                    <p draggable="true" id="draggable2"> ASDFDb </p>
+                </div>
+                <div class="dropTarget"></div>
+                <div class="dropTarget"></div>
+                <div class="dropTarget"></div>
+                <div class="dropTarget"></div>
+            </article>
+        </section>
+        <hr>
+        <section id="preguntas">
+            <h1>Preguntas</h1>
+            <article>
+                <h2>¿Cuáles son las diferencias entre los posibles valores de la propiedad position?</h2>
+                <ul>
+                    <li><strong>Static:</strong> Valor por default. Los elementos se dibujan en la posición del DOM</li>
+                    <li><strong>Relative:</strong> La posicion depende del objeto padre</li>
+                    <li><strong>Fixed:</strong> Se puede cambiar la posicion del elemento con respecto a la ventana</li>
+                    <li><strong>Absolute:</strong> Se puede cambiar la posicion del elemento con respecto a su posicion original</li>
+                    <li><strong>Sticky:</strong> El elemento pasa de <code>relative</code> a <code>fixed</code> en base al scroll</li>
+                </ul>
+            </article>
+            <article>
+                <h2>¿Cuáles son los valores estándar para la propiedad visibility?</h2>
+                Los valores estandar son <code>visible</code> y <code>hidden</code> pero tambien existe <code>collapse</code> para colapsar tablas
+            </article>
+            <article>
+                <h2>¿Qué es el <code>z-index</code> y para qué sirve?</h2>
+                Es una propiedad de estilo en CSS que sirve para dar orden de profundidad a elementos (cual se ve encima de otro en caso de interlapar)
+            </article>
+        </section>
+
+        <footer id="sources">
+            <h1>Sources</h1>
+            <ul>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference" target="_blank">developer.mozilla.org/en-US/docs/Web/JavaScript/Reference</a></li>
+                <li><a href="https://javascript.info/regexp-character-sets-and-ranges" target="_blank">javascript.info/regexp-character-sets-and-ranges</a></li>
+                <li><a href="https://www.w3schools.com/" target="_blank">w3schools</a></li>
+            </ul>
+        </footer>
+        <script src="scripts.js"></script>
+    </body>
+</html>
+
+<!--
+
+ -->

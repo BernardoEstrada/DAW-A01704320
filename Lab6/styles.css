@@ -1,0 +1,207 @@
+body{
+    font-family: sans-serif;
+}
+table{
+    border-collapse: collapse;
+}
+td{
+    padding: 0.5em;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    width: 100vw;
+    max-width:100%;
+    margin: 0;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+nav{
+    padding: 1em;
+}
+
+section{
+    width: 80vw;
+    position: relative;
+    left: 5vw;
+    align-content: flex-start;
+    align-items: flex-start;
+    padding: 2vw;
+}
+
+section>h1{
+    margin: 0;
+}
+
+article{
+    align-self: flex-start;
+    position: inherit;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 2em 2vw 2em 2vw;
+    width:80vw;
+    max-width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+footer{
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    align-items: center;
+    padding: 1em;
+    margin: 0;
+    left: 0;
+}
+
+a:link{
+    color: inherit;
+}
+a:visited{
+    color: #9F9F9F;
+}
+
+.atomIco{
+    height: 2em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+hr{
+    width: 90vw;
+}
+
+input {
+    border: 1px black solid;
+    margin: 0.1em;
+    padding: 0.3em;
+    border-radius: 0.5em;
+}
+input:disabled{
+    background-color: rgba(50,50,50,0.5);
+}
+
+/* Style modifications for phones  768*/
+@media only screen and (max-width: 960px) {
+    section{
+        width: 100vw;
+        left: 0;
+    }
+    article {
+        width:84vw;
+        position: relative;
+        max-width: 90%;
+        left: 6vw;
+    }
+}
+
+.error {
+    color: red;
+    font-weight: bolder;
+}
+
+section#shop{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#shop > h1{
+    flex-grow: 12;
+    width: 100%;
+}
+
+article.shopItem{
+    align-self: flex-start;
+    flex: 0 0 300px;
+}
+
+.itemImg{
+    width:100%;
+}
+
+#watermark {
+    font-weight: bolder;
+    position: fixed;
+    right: 1vw;
+    left: auto;
+    bottom: 1vh;
+    top: auto;
+    text-align: left;
+    font-size: 2em;
+    padding: 0.2em;
+    z-index: 5;
+    width: fit-content;
+    background: white;
+}
+#watermark > #close {
+    position: absolute;
+    top: -0.5em;
+    right: -0.5em;
+    width: 1.2em;
+    height: 1.2em;
+    font-size: 0.6em;
+    /*z-index: 10;*/
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 1.2em;
+}
+
+code.highlighted{
+    color: red;
+    font-size: 1.5em;
+}
+
+.bubble {
+    position: absolute;
+    margin-left: 0.6em;
+    font-size: 1.5em;
+    background: rgba(200, 0, 0, 0.8);
+    border-radius: .4em;
+    color: white;
+    padding: 0.3em;
+}
+
+.bubble:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    width: 0;
+    height: 0;
+    border: .6em solid transparent;
+    border-right-color: rgba(200, 0, 0, 0.8);
+    border-left: 0;
+    margin-top: -.5em;
+    margin-left: -.5em;
+}
+.bubble.small{
+    margin-left: 1.5em;
+}
+.bubble.small:after{
+    top: 40%;
+}
+
+
+.dropTarget {
+    float: inside;
+    width: 100px;
+    height: 35px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.dropTarget.over {
+    border: 2px dashed #000;
+}
