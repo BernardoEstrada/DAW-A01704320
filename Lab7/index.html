@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <title>Lab 7 DAW</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-indigo.min.css" />
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    </head>
+    <body>
+
+    <!-- No header, and the drawer stays open on larger screens (fixed drawer). -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+        <div class="mdl-layout__drawer">
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="#password">PasswordChecker</a>
+                <a class="mdl-navigation__link" href="#shop">Shop</a>
+                <a class="mdl-navigation__link" href="#preguntas">Preguntas</a>
+                <a class="mdl-navigation__link" href="#sources">Sources</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+
+
+
+    <section id="password">
+        <h1>Password Checker</h1>
+        <article>
+
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Password</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="enterPass">
+                        <label class="mdl-textfield__label" for="enterPass"> <span id=passValid ></span> Password: </label>
+                    </div>
+
+<!--                    <label for=enterPass>Password: </label>-->
+<!--                    <input type=password id=enterPass placeholder="Enter your password"/>-->
+
+                    <br>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="password" id="confirmPass" disabled>
+                        <label class="mdl-textfield__label" for="confirmPass"> <span id=confirmValid ></span> Confirmation: </label>
+                    </div>
+
+
+<!--                    <label for=confirmPass>Confirmation: </label>-->
+<!--                    <input type=password id=confirmPass placeholder="Confirm your password" disabled/>-->
+<!--                    <span id=confirmValid ></span>-->
+                    <br>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <span id=errorInPass class=error></span>
+                    <br>
+
+                    <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="showPass">
+                        <input type="checkbox" id="showPass" class="mdl-switch__input">
+                        <span class="mdl-switch__label">Show Password</span>
+                    </label>
+
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="continue">Continue</button>
+                </div>
+            </div>
+
+        </article>
+    </section>
+    <hr>
+    <section id="shop">
+    </section>
+    <hr>
+
+    <section id="preguntas">
+        <h1>Preguntas</h1>
+        <article>
+            <h2>Describe Material design</h2>
+            Material design es una manera de diseñar interfaces amigables, intuitivas y con buena estetica siguiendo lineamientos predefinidos
+            <br><br>
+            <i>Material is an adaptable system of guidelines, components, and tools that support the best practices of user interface design. Backed by open-source code, Material streamlines collaboration between designers and developers, and helps teams quickly build beautiful products.
+            </i>
+            <a href="https://material.io/">Material.io by Google</a>
+        </article>
+    </section>
+
+
+    <footer id="sources">
+        <h1>Sources</h1>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference" target="_blank">developer.mozilla.org/en-US/docs/Web/JavaScript/Reference</a></li>
+            <li><a href="https://javascript.info/regexp-character-sets-and-ranges" target="_blank">javascript.info/regexp-character-sets-and-ranges</a></li>
+            <li><a href="https://www.w3schools.com/" target="_blank">w3schools</a></li>
+        </ul>
+        <h4 id="asterisk">
+            *Prices include VAT
+        </h4>
+
+    </footer>
+
+        </main>
+    </div>
+
+    <script src="password.js" charset="utf-8"></script>
+    <script src="products.js" charset="utf-8"></script>
+    </body>
+</html>

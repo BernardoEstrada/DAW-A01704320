@@ -1,0 +1,27 @@
+#cards{
+    max-width:1200px;
+    align-content: center;
+    align-self: center;
+}
+
+.shopItem{
+    height: 400px;
+    width: 400px;
+    margin: 1vw;
+    padding: 30px;
+    overflow: scroll;
+}
+
+.itemImg{
+    height: 50%;
+}
+
+
+.error {
+    color: red;
+    font-weight: bolder;
+}
+
+.mdl-layout__content{
+    padding: 1vw;
+}
