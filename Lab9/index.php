@@ -127,5 +127,4 @@
 
 <?php
     include("_footer.html");
-    phpinfo()
 ?>
