@@ -1,0 +1,21 @@
+Reporte Lab 11 - A01704320
+
+->sp_help materiales
+	¿Que muestra la instrucción?
+		Muestra informacion sobre la tabla materiales
+
+->Ejecuta las instrucciones que contiene el archivo crear.sql
+	¿Qué efecto tuvo esta acción?
+		Creó todas las tablas al mismo tiempo
+	¿Qué utilidad tiene esta manera de ejecutar los comandos de SQL?
+		Que es mas sencillo pre hacer rutinase inicar una base de datos
+
+->(Archivos)
+	¿Qué relación tienen con las tablas de la base de datos? (checa su contenido)
+		Tienen las mismas columnas
+	¿Qué relación tiene el contenido de este archivo (materiales.sql) con el formato en que se encuentran los datos en el archivo materiales.csv?
+		Que define como se separan las columnas (FIELDTERMINATOR = ',') y las filas (ROWTERMINATOR = '\n') en el archivo csv
+
+->Ejecuta los comandos definidos en el archivo materiales.sql.
+	¿Qué sucedió?
+		Se importaron todos los registros de materiales.csv a la tabla materiales
