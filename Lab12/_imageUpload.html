@@ -1,0 +1,32 @@
+
+
+<div class="divider"></div>
+
+<h4>Change your Profile Picture</h4>
+<?php if (isset($error)): ?>
+<div class="red-text">Error: <?= $error ?></div>
+<?php endif; ?>
+
+<div class="row">
+    <div class="col s6 offset-s3 m2">
+        <?php include("_pp.html") ?>
+    </div>
+    <div class="col s12 m6">
+        <form action="ajustesCuenta.php" method="POST" enctype="multipart/form-data">
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>Select a Picture</span>
+                    <input type="file" name="imagen">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+                <input type="submit" class="waves-effect waves-light btn" value="Upload">
+            </div>
+        </form>
+    </div>
+<!--    <div class="col m2 hide-on-small-only">-->
+<!--        <img src="<?= 'uploads/'.$_SESSION['user'].'.jpg' ?>" alt="Profile Picture" class="circle responsive-img">-->
+<!--    </div>-->
+</div>
+

@@ -34,15 +34,15 @@
 
 <nav>
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
+        <a href="index.php" class="brand-logo">Logo</a>
         <ul class="right hide-on-med-and-down">
 
             <?php if (isset($_SESSION["user"])): ?>
-                <li><a class="disabled"><strong><?="Good ".$greet." ".$_SESSION["user"]?></strong></a></li>
+                <li><a class="disabled"><strong><?="Good ".$greet." ".ucfirst($_SESSION["user"])?></strong></a></li>
                 <li><a class="waves-effect waves-light btn" href="cerrarSesion.php"><i class="material-icons right">directions_run</i>Log Out</a></li>
             <?php endif; ?>
 
-            <li><a class="profilePic" href="ajustesCuenta.php"><img src="yuna.jpg" alt="Profile Picture" class="circle"></></li>
+            <li><a class="profilePic" href="ajustesCuenta.php"><?php include("_pp.html")?></a></li>
         </ul>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
@@ -54,7 +54,7 @@
         <div class="section"></div>
         <div class="row valign-wrapper">
             <div class="col s3 offset-s1">
-                <a href="ajustesCuenta.php"><img src="yuna.jpg" alt="" class="circle responsive-img"></a>
+                <a href="ajustesCuenta.php"><?php include("_pp.html")?></a>
             </div>
             <div class="col s8">
                 <span class="black-text">
