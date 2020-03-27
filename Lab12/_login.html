@@ -1,4 +1,4 @@
-<h1>DJ Fonz</h1>
+<h1>Login</h1>
 
 
 
@@ -6,11 +6,13 @@
     <form class="col s12" action="index.php" method="POST">
         <div class="row">
             <div class="input-field col s12">
-                <input id="user"  name="user" type="text" class="validate <?= isset($error)?'invalid':'' ?>">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="user" value="<?= isset($_POST['user'])?$_POST['user']:'' ?>" name="user" type="text" class="validate <?= isset($error)?'invalid':'' ?>">
                 <label for="user">Usuario</label>
                 <span class="helper-text"> </span>
             </div>
             <div class="input-field col s12">
+                <i class="material-icons prefix">lock</i>
                 <input id="password" type="password" name="password" class="validate <?= isset($error)?'invalid':'' ?>">
                 <label for="password">Password</label>
                 <span class="helper-text wrong"> </span>
