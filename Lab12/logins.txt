@@ -1,0 +1,7 @@
+Logins:
+
+USERNAME    |   PASSWORD
+-----------------------
+berni       |   pass
+root        |   12345
+test        |   qwerty

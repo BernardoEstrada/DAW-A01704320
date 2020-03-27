@@ -8,10 +8,6 @@ function verifyCredentials($user, $pass)
 
     //se agrega un salt a la contraseña y después se pasa por un hash para guardarla seguramente
     //esto se guardaría en la base de datos (y se accedería a través de un gestor)
-    //Logins:
-    // berni, pass
-    // root, 12345
-    // test, qwerty
     $logins = [
         "berni" => ["salt" => "3521", "hash" => "383fcf6f93c466c3554f95d9edd1f5e2a3625b19e2fa2c34e9259d82af927ccd"],
         "root" => ["salt" => "6584", "hash" => "c25693337a0c7902702fbe72945697a284d65b59806a6967b216b045cfb13223"],
