@@ -1,0 +1,5 @@
+<?php if(isset($_SESSION['user']) && file_exists('uploads/'.$_SESSION['user'].'.jpg')): ?>
+    <img src="<?= 'uploads/'.$_SESSION['user'].'.jpg' ?>" alt="Profile Picture" class="circle responsive-img">
+<?php else: ?>
+    <i class="material-icons prefix large">account_circle</i>
+<?php endif; ?>
