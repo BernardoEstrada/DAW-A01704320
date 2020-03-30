@@ -1,0 +1,81 @@
+Agrega un nuevo registro a la tabla de materiales:
+  INSERT INTO Materiales values(1000, 'xxx', 1000)
+
+Revisa el contenido de la tabla materiales y determina si existe alguna inconsistencia en el contenido de la tabla.
+¿Cuál es?
+La clave 1000 aparece 2 veces
+¿A qué se debe?
+No está especificado que este campo no se puede repetir
+
+
+
+A continuación definiremos a la Clave como llave primaria de la tabla de materiales, esto mediante la creación de un constraint.
+  ALTER TABLE Materiales add constraint llaveMateriales PRIMARY KEY (Clave)
+
+Agrega nuevamente el registro a la tabla de materiales:
+  INSERT INTO Materiales values(1000, 'xxx', 1000)
+
+¿Qué ocurrió?
+Se produjo un error al insertar la llave
+
+Verifica si la tabla de materiales tiene definido algún constraint (restricción):
+  sp_helpconstraint materiales
+ Si, clave
+
+¿Qué información muestra esta consulta?
+	Las llaves de la tabla materiales
+
+¿Qué sentencias utilizaste para definir las llaves primarias?
+	ALTER TABLE Materiales add constraint llaveMateriales PRIMARY KEY (Clave)
+	ALTER TABLE Proveedores add constraint llaveProveedores PRIMARY KEY (RFC)
+	ALTER TABLE Proyectos add constraint llaveProyectos PRIMARY KEY (Numero)
+
+
+Define el constraint correspondiente a la llave primaria para la tabla entregan, considerando que en este caso, la llave primaria está integrada por varias columnas.
+¿Qué sentencias utilizaste para definir este constrait?
+	ALTER TABLE Entregan add constraint llaveEntregan PRIMARY KEY (Clave,RFC,Numero,Fecha)
+
+
+Intenta insertar en la tabla entregan el siguiente registro:
+  INSERT INTO entregan values (0, 'xxx', 0, '1-jan-02', 0) ;
+
+¿Qué particularidad observas en los valores para clave, rfc y numero?
+	Que no son valores válidos (no existen en las otras tablas)
+¿Cómo responde el sistema a la inserción de este registro?
+	los acepta
+
+
+Ahora agreguemos el siguiente constraint:
+  ALTER TABLE entregan add constraint cfentreganclave
+  foreign key (clave) references materiales(clave);
+
+Intenta nuevamente la inserción del registro inconsistente.
+¿Qué significa el mensaje que emite el sistema?
+	Que no encontró la clave en la tabla materiales
+¿Qué significado tiene la sentencia anterior?
+	Que los valores de clave en entregan deben de existir en clave en la tabla de materiales
+
+
+Para asegurar que no se presenten inconsistencias con relación a las otras llaves foráneas, agrega los constraints correspondientes a rfc y número.
+Revisa los constraints de cada tabla. Para visualizar los constraints que hemos creado, se utiliza la siguiente sentencia:
+  sp_helpconstraint tableName
+¿Qué significan las columnas de esas consultas?
+	La información de cada llave foranea
+
+
+ INSERT INTO entregan values (1000, 'AAAA800101', 5000, GETDATE(), 0);
+Lista el registro que acabas de crear.
+¿Qué uso se le está dando a GETDATE()?
+	Para agregar un timestamp a cada entrada de la bd
+¿Tiene sentido el valor del campo de cantidad?
+	No
+
+ 
+ ALTER TABLE entregan add constraint cantidad check (cantidad > 0) ;
+Intenta insertar un registro con cantidad igual o menor que 0.
+¿Cómo responde el sistema?
+	The INSERT statement conflicted with the CHECK constraint "cantidad"
+¿Qué significa el mensaje?
+	Que un valor del INSERT no cumple con los requerimientos del constraint
+
+Integridad referencial: Son reglas para evitar que al borrar o cambiar datos relacionados entre tablas, se pierda dicha relación y genere errores
