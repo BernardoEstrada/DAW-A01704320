@@ -78,4 +78,4 @@ Intenta insertar un registro con cantidad igual o menor que 0.
 ¿Qué significa el mensaje?
 	Que un valor del INSERT no cumple con los requerimientos del constraint
 
-Integridad referencial:
+Integridad referencial: Son reglas para evitar que al borrar o cambiar datos relacionados entre tablas, se pierda dicha relación y genere errores
