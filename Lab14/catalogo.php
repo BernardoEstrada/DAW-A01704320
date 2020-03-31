@@ -12,15 +12,23 @@
     <div class="card-panel">
         <div class="row">
             <div class="col s12 m4">
-            <form action="catalogo.php">
+            <form method="POST">
                 <h4>Filtrar Catálogo</h4>
                 <!--tamaño-->
                 <!--condiciones medicas-->
                 <!--edad-->
                 <div id="ageSlider"></div> <div id="ageSlider-value"></div>
+                <div class="hidden" hidden>
+                    <input id="minAge" name="minAge" type="number" class="validate">
+                    <label for="minAge">Min</label>
+                    <input id="maxAge" name="maxAge" type="number" class="validate">
+                    <label for="maxAge">Max</label>
+                </div>
                 <!--sexo-->
-                <div class="col s6"><label><input id="hembra" name="group1" type="checkbox" checked /><span>Hembra</span></label></div>
-                <div class="col s6"><label><input id="macho" name="group1" type="checkbox" checked/><span>Macho</span></label></div>
+                <div class="row">
+                    <div class="col s6"><label><input id="hembra" name="hembra" type="checkbox" <?= check($_POST, "hembra")?"checked":"" ?>/><span>Hembra</span></label></div>
+                    <div class="col s6"><label><input id="macho" name="macho" type="checkbox"  <?= check($_POST, "macho")?"checked":"" ?>/><span>Macho</span></label></div>
+                </div>
 
                 <!--personalidad-->
 
@@ -47,8 +55,11 @@
     <div class="row">
     <?php
     print_r($_POST);
+    if(isset($_POST["minAge"])){$_POST["minAge"] = limpia_entrada($_POST["minAge"]);}
+    if(isset($_POST["maxAge"])){$_POST["maxAge"] = limpia_entrada($_POST["maxAge"]);}
 
-    $result = getDogsByAge(0,50);
+    //$result = getDogsByAge($_POST["minAge"],$_POST["maxAge"]);
+    $result = filterDogs($_POST["minAge"],$_POST["maxAge"],check($_POST, "macho"),check($_POST, "hembra"));
 
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
@@ -77,10 +88,6 @@
         }
     }
 
-
-    include("_tarjetaPerro.html");
-        include("_tarjetaPerro.html");
-
     ?>
     </div>
 </div>
@@ -108,12 +115,12 @@
 
   let ageSlider = document.getElementById('ageSlider');
   noUiSlider.create(ageSlider, {
-      start: [6, 24],
+      start: [<?= $_POST["minAge"].','.$_POST["maxAge"] ?>],
       connect: true,
       step: 1,
       tooltips: [
-          {to: value => value/12<1 ? parseInt(value) + "M" :  parseInt(value/12) + "A"},
-          {to: value => value/12<1 ? parseInt(value) + "M" :  parseInt(value/12) + "A"}
+          {to: value => value/12<1 ? parseInt(value) + "M" :  parseInt(value/12) + "A", from: value => Number(value.replace(/[MA]/, ''))},
+          {to: value => value/12<1 ? parseInt(value) + "M" :  parseInt(value/12) + "A", from: value => Number(value.replace(/[MA]/, ''))}
       ],
       range: {
           'min': [0],
@@ -121,15 +128,39 @@
           'max': [144]
       }, format: {
           // 'to' the formatted value. Receives a number.
-          to:  value => value/12<1 ? parseInt(value) + " meses" :  parseInt(value/12) + " años",
+          to:  value => {
+              if(value/12<1)
+                  return parseInt(value) + " meses"
+              else if(value == 144)
+                  return parseInt(value/12) + "+ años"
+              else
+                  return parseInt(value/12) + " años"
+          },
           // 'from' the formatted value.
           // Receives a string, should return a number.
-          from: value => Number(value.replace(' meses\|años', ''))
-      }
+          from: function(value) {
+              let res = value.replace(/ meses/, '');
+              if(isNaN(res)){
+                  res = value.replace(/ años/, '')*12;
+                  if(isNaN(res)){
+                      res = value.replace("+ años", '')*12;
+                  }
+              } else(res=Number(res));
+              return res;
+          }
+    }
   });
   let ageSliderValueElement = document.getElementById('ageSlider-value');
   ageSlider.noUiSlider.on('update', function (values) {
       ageSliderValueElement.innerHTML = values.join(' - ');
+  });
+
+  let miA = document.getElementById('minAge');
+  let maA = document.getElementById('maxAge');
+
+  ageSlider.noUiSlider.on('update', function (values) {
+      miA.value = ageSlider.noUiSlider.options.format.from(values[0]);
+      maA.value = ageSlider.noUiSlider.options.format.from(values[1]);
   });
 
 </script>
