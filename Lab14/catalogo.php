@@ -35,17 +35,49 @@
                 <!--raza-->
 
                 <h4>Ordenar Por</h4>
+                <div class="row">
+                    <div class="input-field col s12">
 
+                        <select id="sort" name="sort">
+                            <option value="" disabled <?= !check($_POST, "sort")?"selected":"" ?> >Seleccione una opción</option>
+                            <option value="name" <?= check($_POST, "sort")=="name"?"selected":"" ?>>Nombre</option>
+                            <option value="timeIn" <?= check($_POST, "sort")=="timeIn"?"selected":"" ?>>Tiempo en el refugio</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                        <label>Orden</label>
+
+                    </div>
+
+                    <div class="switch col s12">
+                        <div class="col s6">
+                            <label>
+                                <input name="order" type="radio" value="asc" <?= check($_POST, "order")!="desc"?"checked":""?>/>
+                                <span>Ascending</span>
+                            </label>
+                        </div>
+                        <div class="col s6">
+                            <label>
+                                <input name="order" type="radio" value="desc" <?= check($_POST, "order")=="desc"?"checked":""?> />
+                                <span>Descending</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
                 <!--nombre-->
                 <!--tiempo en el refugio-->
                 <!--edad-->
                 <!--tamaño-->
                 <!--condiciones medicas-->
                 <!--personalidad-->
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                    Submit
-                    <i class="material-icons right">send</i>
-                </button>
+
+                <div class="row">
+                    <div class="col s12">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">
+                            Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
             </form>
             </div>
         </div>
@@ -55,11 +87,14 @@
     <div class="row">
     <?php
     print_r($_POST);
-    if(isset($_POST["minAge"])){$_POST["minAge"] = limpia_entrada($_POST["minAge"]);}
-    if(isset($_POST["maxAge"])){$_POST["maxAge"] = limpia_entrada($_POST["maxAge"]);}
+
+    $minAge = isset($_POST["minAge"])?limpia_entrada($_POST["minAge"]):0;
+    $maxAge = isset($_POST["maxAge"])?limpia_entrada($_POST["maxAge"]):144;
+    $sort = isset($_POST["sort"])?limpia_entrada($_POST["sort"]):"";
+    $order = isset($_POST["order"])?$_POST["order"]:false;
 
     //$result = getDogsByAge($_POST["minAge"],$_POST["maxAge"]);
-    $result = filterDogs($_POST["minAge"],$_POST["maxAge"],check($_POST, "macho"),check($_POST, "hembra"));
+    $result = filterDogs($minAge,$maxAge,check($_POST, "macho"),check($_POST, "hembra"), $sort, $order);
 
     if(mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc($result)){
@@ -67,6 +102,7 @@
             //$img = "img/dog".$row["idPerro"].".jpg";
             $img = "img/Mario.jpg";
             $name = $row["nombre"];
+            $test = $row["fechaLlegada"];
 
             $m = $row["edad"];
             $a = ($m-$m%12)/12;
@@ -109,13 +145,14 @@
   $(document).ready(function(){
     $('.materialboxed').materialbox();
     $('.modal').modal();
+    $('select').formSelect();
   });
 
 
 
   let ageSlider = document.getElementById('ageSlider');
   noUiSlider.create(ageSlider, {
-      start: [<?= $_POST["minAge"].','.$_POST["maxAge"] ?>],
+      start: [<?= $minAge.','.$maxAge ?>],
       connect: true,
       step: 1,
       tooltips: [

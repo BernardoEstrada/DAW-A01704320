@@ -52,26 +52,46 @@ function getDogsByAge($min, $max){
     closeDb($conn);
     return $result;
 }
-function filterDogs($minA, $maxA, $male, $female){
+function filterDogs($minA, $maxA, $male, $female, $sort, $order){
     $conn = connectDb();
 
     if($maxA==144){
         $maxA=9999;
     }
-    $male = $male?"macho":"";
-    $female = $female?"hembra":"";
 
     $sql = "
         select 
                idPerro,
                nombre,
-               edadEstimadaLlegadaMeses,
                fechaLlegada,
                TIMESTAMPDIFF(MONTH, DATE_ADD(fechaLlegada, INTERVAL -edadEstimadaLlegadaMeses MONTH), CURDATE()) as edad 
-        FROM perros 
-        WHERE sexo='" . $female . "'
-            OR sexo='" . $male . "'
-        HAVING Edad BETWEEN " . $minA . " AND " . $maxA;
+        FROM perros";
+
+    if($male XOR $female){
+        if($male AND !$female){
+            $sql.= " WHERE sexo='macho'";
+        } else {
+            $sql .= " WHERE sexo='hembra'";
+        }
+    }
+
+    $sql.=" HAVING Edad BETWEEN " . $minA . " AND " . $maxA;
+
+    switch($sort){
+        case "name":
+            $sql.=" ORDER BY nombre";
+            break;
+        case "timeIn":
+            $sql.=" ORDER BY fechaLlegada";
+            break;
+        default:
+            break;
+
+    }
+    if($sort!="" AND $order){
+        $sql.=" ".$order;
+    }
+
     echo $sql;
     $result = mysqli_query($conn, $sql);
 
