@@ -44,7 +44,6 @@
                             <option value="timeIn" <?= check($_POST, "sort")=="timeIn"?"selected":"" ?>>Tiempo en el refugio</option>
                             <option value="3">Option 3</option>
                         </select>
-                        <label>Orden</label>
 
                     </div>
 
