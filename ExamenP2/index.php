@@ -6,16 +6,16 @@ require_once 'util.php';
     </header>
 
 <main>
-    <div class="container">
-        <div id="modal-estado" class="modal" style="overflow: visible"></div>
-    </div>
 
-        <?php include '_navbar.html'; ?>
+    <?php include '_navbar.html'; ?>
+    <div class="container">
+        <div id="modal-incidente" class="modal" style="overflow: visible"></div>
+    </div>
 
         <div class="container">
 
-            <a class="right btn-floating btn-large waves-effect waves-light red" href="vista_agregar_incidente.php"><i class="material-icons">add</i></a>
-            <h3>Zombis</h3>
+            <a class="right btn-floating btn-large waves-effect waves-light red" id="btn-agrega-incidente"><i class="material-icons">add</i></a>
+            <h3>Jurassic Park</h3>
 
             <div id="mostarIncidentes"></div>
 
@@ -25,4 +25,10 @@ require_once 'util.php';
 <br><br>
 
 <?php include '_footer.html'; ?>
+<script>
+    $(document).ready(function() {
+        $('#modal-incidente').modal();
+    });
+    document.getElementById("btn-agrega-incidente").addEventListener("click", mostrarEdicion)
+</script>
 <script>mostrarIncidentes();</script>

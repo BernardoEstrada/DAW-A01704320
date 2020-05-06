@@ -18,5 +18,50 @@ function sqlqry($qry) {
 }
 
 function returnIncidentes(){
-    
+    $sql = "SELECT nombreLugar lugar, nombreTipoIn tipoIncidente, fecha FROM incidente i, lugares l,tipos_incidentes t
+            WHERE i.idLugar=l.idLugar
+            AND i.idTipoIn=t.idTipoIn
+            ORDER BY fecha DESC";
+
+    $resp = sqlqry($sql);
+    $totalIn = mysqli_num_rows($resp);
+    if(!$resp){
+        http_response_code(500);
+        return -1;
+    }
+    $tabla = "
+        <thead>
+            <tr>
+                <th>Lugar</th>
+                <th>Tipo de Incidente</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>";
+
+    while ($row = mysqli_fetch_array($resp, MYSQLI_BOTH)){
+        $tabla .= "<tr>";
+        $tabla .= "<td>".ucfirst($row['lugar'])."</td>";
+        $tabla .= "<td>".ucfirst($row['tipoIncidente'])."</td>";
+        $tabla .= "<td>".$row['fecha']."</td>";
+        $tabla .= "</tr>";
+    }    $tabla .= "
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Incidentes Totales:</th>
+            <th>$totalIn</th>
+        </tr>
+    </tfoot>";
+    return $tabla;
+}
+function getOpciones($id, $campo, $tabla) {
+    $sql = "SELECT $id, $campo FROM $tabla";
+    $result = sqlqry($sql);
+    $option = "";
+
+    while($row = mysqli_fetch_array($result)){
+        $option = $option."<option value=".$row[0].">".ucfirst($row[1])."</option>";
+    }
+    return $option;
 }
